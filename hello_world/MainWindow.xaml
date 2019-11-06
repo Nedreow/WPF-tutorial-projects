@@ -6,7 +6,17 @@
         xmlns:local="clr-namespace:hello_world"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid Background="SteelBlue">
-        
+    <Grid Background="#f9f9f9">
+        <Label Content="Hello World 2"
+               Margin="0, 6, 10, 0"
+               HorizontalAlignment="Right"/>
+        <Label Content="Hello World1" 
+               BorderBrush="DarkGray"
+               BorderThickness="1,1"
+               Margin="0, 0, 0, 0"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Padding="3,1"/>
+        <Border BorderBrush="DarkGray" BorderThickness="10"/>
     </Grid>
 </Window>
