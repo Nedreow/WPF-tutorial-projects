@@ -1,0 +1,9 @@
+# Don't track content of these folders
+hello_world/bin/Debug/
+hello_world/obj/Debug/
+
+
+# Compiled source #
+###################
+*.dll
+*.exe

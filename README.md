@@ -1,0 +1,1 @@
+This Solution contins a number of C# and WPF practice programs following the instruction in https://www.udemy.com/course/windows-presentation-foundation-masterclass/.
