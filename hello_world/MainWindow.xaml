@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:hello_world"
         mc:Ignorable="d"
-        Title="MainWindow" Height="250" Width="525">
+        Title="MainWindow" Height="350" Width="525">
     <Grid Background="#f9f9f9" ShowGridLines="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -13,6 +13,7 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
@@ -69,6 +70,11 @@
             Grid.Column="1" Grid.Row="2"
             x:Name="Thingijig"
             Margin="5"/>
+        
+        <Canvas
+            Background="LightYellow"
+            Grid.Column="2" Grid.Row="2"
+            Grid.RowSpan="2"/>
     </Grid>
     <!-- <Canvas Background="Aqua"> -->
     <!--     <Label Content="Hello World 2" -->
