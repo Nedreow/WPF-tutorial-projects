@@ -1,4 +1,4 @@
-﻿namespace simple_calculator
+﻿namespace Calculator
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
