@@ -10,43 +10,24 @@ namespace Calculator
     /// </summary>
     public partial class MainWindow
     {
-        private double lastNumber;
-        private double result;
+        private double _lastNumber;
+        private double _result;
 
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        private void ResultLabelAdd(string addString)
-        {
-            if ((string) ResultLabel.Content == "0")
-            {
-                ResultLabel.Content = addString;
-            }
-            else
-            {
-                ResultLabel.Content = ResultLabel.Content + addString;
-            }
-        }
-
-        private void ResultLabelRemove(int removeCount)
-        {
-            string labelContent = ResultLabel.Content.ToString();
-
-            if (labelContent.Length > removeCount)
-            {
-                ResultLabel.Content = labelContent.Substring(0, labelContent.Length - removeCount);
-            }
-            else
-            {
-                ResultLabel.Content = "0";
-            }
+            _lastNumber = 0;
         }
 
         private void ResultLabelSet(string setString)
         {
             ResultLabel.Content = setString;
+        }
+
+        private void ResultLabelSet(double setDouble)
+        {
+            ResultLabel.Content = setDouble.ToString(CultureInfo.InvariantCulture);
         }
 
         private void ResultLabelClear()
@@ -56,7 +37,7 @@ namespace Calculator
 
         private void AcButton_OnClick(object sender, RoutedEventArgs e)
         {
-            ResultLabelRemove(1);
+            
         }
 
         private void DivideButton_OnClick(object sender, RoutedEventArgs e)
@@ -81,15 +62,18 @@ namespace Calculator
 
         private void NegativeButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(ResultLabel.Content.ToString(), out lastNumber))
-            {
-                ResultLabel.Content = (lastNumber * -1).ToString(CultureInfo.InvariantCulture);
-            }
+            _lastNumber = _lastNumber * -1;
+            ResultLabelSet(_lastNumber);
         }
 
         private void NumberButton_OnClick(object sender, RoutedEventArgs e)
         {
-            ResultLabelAdd(((Button)sender).Content.ToString());
+            var toAdd = double.Parse(((Button) sender).Content.ToString());
+
+            var newNumber = _lastNumber * 10 + toAdd;
+            
+            ResultLabelSet(newNumber);
+            _lastNumber = newNumber;
         }
 
         private void PercentageButton_OnClick(object sender, RoutedEventArgs e)
