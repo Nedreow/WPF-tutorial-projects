@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="525" Width="350" Background="#f9f9f9">
+        Title="Calculator" Height="525" Width="350" Background="#f9f9f9">
         
         <Window.Resources>
                 <Style TargetType="Button">
@@ -30,50 +30,51 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
-        <Label Content="0"
+        <Label x:Name="ResultLabel" Content="0"
                FontSize="60"
                HorizontalAlignment="Right"
                VerticalAlignment="Bottom"
                Grid.Column="0" Grid.Row="0"
                Grid.ColumnSpan="4"/>
         
-        <Button Content="AC"
+        <Button x:Name="AcButton" Content="AC"
                 Grid.Column="0" Grid.Row="1"/>
-        <Button Content="+/1"
+        <Button x:Name="NegativeButton" Content="+/1"
                 Grid.Column="1" Grid.Row="1"/>
-        <Button Content="%"
+        <Button x:Name="PercentageButton" Content="%"
                 Grid.Column="2" Grid.Row="1"/>
-        <Button Content="/"
+        <Button x:Name="DivideButton" Content="/"
                 Grid.Column="3" Grid.Row="1"/>
-        <Button Content="7"
+        <Button x:Name="SevenButton" Content="7"
+                Click="SevenButton_OnClick"
                 Grid.Column="0" Grid.Row="2"/>
-        <Button Content="8"
+        <Button x:Name="EightButton" Content="8"
                 Grid.Column="1" Grid.Row="2"/>
-        <Button Content="9"
+        <Button x:Name="NineButton" Content="9"
                 Grid.Column="2" Grid.Row="2"/>
-        <Button Content="*"
+        <Button x:Name="MultiplyButton" Content="*"
                 Grid.Column="3" Grid.Row="2"/>
-        <Button Content="4"
+        <Button x:Name="FourButton" Content="4"
                 Grid.Column="0" Grid.Row="3"/>
-        <Button Content="5"
+        <Button x:Name="FiveButton" Content="5"
                 Grid.Column="1" Grid.Row="3"/>
-        <Button Content="6"
+        <Button x:Name="SixButton" Content="6"
                 Grid.Column="2" Grid.Row="3"/>
-        <Button Content="-"
+        <Button x:Name="MinusButton" Content="-"
                 Grid.Column="3" Grid.Row="3"/>
-        <Button Content="1"
+        <Button x:Name="OneButton" Content="1"
                 Grid.Column="0" Grid.Row="4"/>
-        <Button Content="2"
+        <Button x:Name="TwoButton" Content="2"
                 Grid.Column="1" Grid.Row="4"/>
-        <Button Content="3"
+        <Button x:Name="ThreeButton" Content="3"
                 Grid.Column="2" Grid.Row="4"/>
-        <Button Content="+"
+        <Button x:Name="PlusButton" Content="+"
                 Grid.Column="3" Grid.Row="4"/>
-        <Button Content="="
+        <Button x:Name="ZeroButton" Content="="
                 Grid.Column="3" Grid.Row="5"/>
-        <Button Content="."
+        <Button x:Name="DotButton" Content="."
                 Grid.Column="2" Grid.Row="5"/>
-        <Button Content="0"
+        <Button x:Name="SolveButton" Content="0"
                 Grid.ColumnSpan="2"
                 Grid.Column="0" Grid.Row="5"/>
     </Grid>
