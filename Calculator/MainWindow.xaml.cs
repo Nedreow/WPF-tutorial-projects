@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace Calculator
 {
@@ -12,16 +13,21 @@ namespace Calculator
             InitializeComponent();
         }
 
-        private void SevenButton_OnClick(object sender, RoutedEventArgs e)
+        private void AddToResultLabel(string addString)
         {
             if ((string) ResultLabel.Content == "0")
             {
-                ResultLabel.Content = "7";
+                ResultLabel.Content = addString;
             }
             else
             {
-                ResultLabel.Content += "7";
+                ResultLabel.Content += addString;
             }
+        }
+
+        private void NumberButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            AddToResultLabel(((Button)sender).Content.ToString());
         }
     }
 }
