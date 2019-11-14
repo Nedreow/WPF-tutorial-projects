@@ -13,7 +13,7 @@ namespace Calculator
             InitializeComponent();
         }
 
-        private void AddToResultLabel(string addString)
+        private void ResultLabelAdd(string addString)
         {
             if ((string) ResultLabel.Content == "0")
             {
@@ -25,9 +25,38 @@ namespace Calculator
             }
         }
 
+        private void ResultLabelRemove(int removeCount)
+        {
+            string labelContent = ResultLabel.Content.ToString();
+
+            if (labelContent.Length > removeCount)
+            {
+                ResultLabel.Content = labelContent.Substring(0, labelContent.Length - removeCount);
+            }
+            else
+            {
+                ResultLabel.Content = "0";
+            }
+        }
+
+        private void ResultLabelSet(string setString)
+        {
+            ResultLabel.Content = setString;
+        }
+
+        private void ResultLabelClear()
+        {
+            ResultLabel.Content = "0";
+        }
+
         private void NumberButton_OnClick(object sender, RoutedEventArgs e)
         {
-            AddToResultLabel(((Button)sender).Content.ToString());
+            ResultLabelAdd(((Button)sender).Content.ToString());
+        }
+
+        private void AcButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            ResultLabelRemove(1);
         }
     }
 }

@@ -38,6 +38,7 @@
                Grid.ColumnSpan="4"/>
         
         <Button x:Name="AcButton" Content="AC"
+                Click="AcButton_OnClick"
                 Grid.Column="0" Grid.Row="1"/>
         <Button x:Name="NegativeButton" Content="+/-"
                 Grid.Column="1" Grid.Row="1"/>
