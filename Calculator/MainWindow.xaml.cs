@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Globalization;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Calculator
@@ -8,6 +10,9 @@ namespace Calculator
     /// </summary>
     public partial class MainWindow
     {
+        private double lastNumber;
+        private double result;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -21,7 +26,7 @@ namespace Calculator
             }
             else
             {
-                ResultLabel.Content += addString;
+                ResultLabel.Content = ResultLabel.Content + addString;
             }
         }
 
@@ -49,14 +54,57 @@ namespace Calculator
             ResultLabel.Content = "0";
         }
 
+        private void AcButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            ResultLabelRemove(1);
+        }
+
+        private void DivideButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void DotButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void MinusButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void MultiplyButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void NegativeButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (double.TryParse(ResultLabel.Content.ToString(), out lastNumber))
+            {
+                ResultLabel.Content = (lastNumber * -1).ToString(CultureInfo.InvariantCulture);
+            }
+        }
+
         private void NumberButton_OnClick(object sender, RoutedEventArgs e)
         {
             ResultLabelAdd(((Button)sender).Content.ToString());
         }
 
-        private void AcButton_OnClick(object sender, RoutedEventArgs e)
+        private void PercentageButton_OnClick(object sender, RoutedEventArgs e)
         {
-            ResultLabelRemove(1);
+            
+        }
+
+        private void PlusButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void ZeroButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
