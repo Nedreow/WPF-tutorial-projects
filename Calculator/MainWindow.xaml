@@ -54,7 +54,7 @@
         <Button x:Name="AnsButton" Content="Ans"
                 Click="AnsButton_OnClick"
                 Grid.Column="1" Grid.Row="1"/>
-        <Button x:Name="NegativeButton" Content="-"
+        <Button x:Name="NegativeButton" Content="-/+"
                 Click="NegativeButton_OnClick"
                 Grid.Column="2" Grid.Row="1"/>
         <Button x:Name="DivideButton" Content="/"
