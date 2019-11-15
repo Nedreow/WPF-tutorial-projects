@@ -10,11 +10,11 @@ namespace Calculator
     /// </summary>
     public static class Solver
     {
-        public static string SolveMath(string operand1, string operand2, char operandType)
+        public static string SolveMath(string operand1, string operand2, char operatorType)
         {
             double solution;
             
-            switch (operandType)
+            switch (operatorType)
             {
                 case '+':
                     solution = double.Parse(operand1) + double.Parse(operand2);
