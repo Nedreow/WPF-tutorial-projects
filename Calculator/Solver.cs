@@ -1,3 +1,6 @@
+using System;
+using System.Globalization;
+
 namespace Calculator
 {
     /// <summary>
@@ -7,9 +10,29 @@ namespace Calculator
     /// </summary>
     public static class Solver
     {
-        public static string SolveMath(string operand1, string operand2, char questionType)
+        public static string SolveMath(string operand1, string operand2, char operandType)
         {
-            return "0";
+            double solution;
+            
+            switch (operandType)
+            {
+                case '+':
+                    solution = double.Parse(operand1) + double.Parse(operand2);
+                    break;
+                case '-':
+                    solution = double.Parse(operand1) - double.Parse(operand2);
+                    break;
+                case '*':
+                    solution = double.Parse(operand1) * double.Parse(operand2);
+                    break;
+                case '/':
+                    solution = double.Parse(operand1) / double.Parse(operand2);
+                    break;
+                default:
+                    throw new ArgumentException("Invalid operand");
+            }
+
+            return Math.Round(solution, 5).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

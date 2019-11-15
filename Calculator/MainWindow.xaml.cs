@@ -7,11 +7,14 @@ namespace Calculator
     /// Interaction logic for MainWindow.xaml
     ///
     /// The user input is treated as a string here, and as a double in the Solver
+    ///
+    /// todo: show previous value and operator above current value
     /// </summary>
     public partial class MainWindow
     {
         private string _lastNumber;
-        private bool operandFlag = false;
+        private char _operatorChar;
+        private bool _operandFlag;
 
         public MainWindow()
         {
@@ -46,28 +49,21 @@ namespace Calculator
             }
         }
 
-        private void DivideButton_OnClick(object sender, RoutedEventArgs e)
+        private void ClearButton_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            _lastNumber = "";
+            _operatorChar = '\0';
+            _operandFlag = false;
+            ResultLabel.Content = "0";
         }
 
         private void DotButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (operandFlag || ResultLabel.Content.ToString().Contains("."))
+            if (_operandFlag || ResultLabel.Content.ToString().Contains("."))
                 return;
             
             ResultLabel.Content += ".";
-            operandFlag = true;
-        }
-
-        private void MinusButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void MultiplyButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            
+            _operandFlag = true;
         }
 
         private void NegativeButton_OnClick(object sender, RoutedEventArgs e)
@@ -91,22 +87,30 @@ namespace Calculator
             var toAdd = ((Button) sender).Content;
 
             ResultLabel.Content = currentNumber == "0" ? toAdd : currentNumber + toAdd;
-            operandFlag = false;
+            _operandFlag = false;
         }
 
-        private void PercentageButton_OnClick(object sender, RoutedEventArgs e)
+        private void OperatorButton_OnClick(object sender, RoutedEventArgs e)
         {
-            
-        }
-
-        private void PlusButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            
+            if (_operandFlag || _operatorChar != '\0')
+                return;
+                
+            _operatorChar = ((Button)sender).Content.ToString()[0];
+            _operandFlag = true;
+            _lastNumber = ResultLabel.Content.ToString();
+            ResultLabelClear();
         }
 
         private void SolveButton_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            if (_lastNumber == "" || _operatorChar == '\0')
+                return;
+                
+            var solution = Solver.SolveMath(_lastNumber, ResultLabel.Content.ToString(), _operatorChar);
+
+            _operatorChar = '\0';
+
+            ResultLabel.Content = solution;
         }
     }
 }
