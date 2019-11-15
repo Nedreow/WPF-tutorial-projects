@@ -32,7 +32,7 @@ namespace Calculator
                     throw new ArgumentException("Invalid operand");
             }
 
-            return Math.Round(solution, 5).ToString(CultureInfo.InvariantCulture);
+            return Math.Round(solution, 10).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

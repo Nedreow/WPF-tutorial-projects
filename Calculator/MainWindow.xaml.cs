@@ -5,14 +5,11 @@ namespace Calculator
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
-    ///
-    /// The user input is treated as a string here, and as a double in the Solver
-    ///
-    /// todo: show previous value and operator above current value
     /// </summary>
     public partial class MainWindow
     {
         private string _lastNumber;
+        private string _result;
         private char _operatorChar;
         private bool _operandFlag;
 
@@ -23,21 +20,21 @@ namespace Calculator
 
         private void ResultLabelClear()
         {
-            ResultLabel.Content = "0";
+            InputLabel.Content = "0";
         }
 
         private void ResultLabelRemove(int characters)
         {
-            var labelContent = ResultLabel.Content.ToString();
+            var labelContent = InputLabel.Content.ToString();
 
-            ResultLabel.Content = labelContent.Length > characters
+            InputLabel.Content = labelContent.Length > characters
                 ? labelContent.Substring(0, labelContent.Length - characters)
                 : "0";
         }
 
         private void AcButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var resultString = ResultLabel.Content.ToString();
+            var resultString = InputLabel.Content.ToString();
 
             if (resultString.Length > 1 && (resultString[resultString.Length - 2] == '.' || resultString[resultString.Length - 2] == '-'))
             {
@@ -49,55 +46,71 @@ namespace Calculator
             }
         }
 
-        private void ClearButton_OnClick(object sender, RoutedEventArgs e)
+        private void AnsButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _lastNumber = "";
-            _operatorChar = '\0';
-            _operandFlag = false;
-            ResultLabel.Content = "0";
+            if (_result == "")
+                return;
+
+            InputLabel.Content = _result;
         }
 
         private void DotButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (_operandFlag || ResultLabel.Content.ToString().Contains("."))
+            if (_operandFlag || InputLabel.Content.ToString().Contains("."))
                 return;
             
-            ResultLabel.Content += ".";
+            InputLabel.Content += ".";
             _operandFlag = true;
         }
 
         private void NegativeButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if ((ResultLabel.Content.ToString() == "0"))
+            if (InputLabel.Content.ToString() == "0" && _result != null)
+            {
+                InputLabel.Content = _result;
+            }
+            
+            if (InputLabel.Content.ToString() == "0")
                 return;
             
-            if (ResultLabel.Content.ToString().Contains("-"))
+            if (InputLabel.Content.ToString().Contains("-"))
             {
-                ResultLabel.Content = ResultLabel.Content.ToString().Substring(1);
+                InputLabel.Content = InputLabel.Content.ToString().Substring(1);
             }
             else
             {
-                ResultLabel.Content = "-" + ResultLabel.Content;
+                InputLabel.Content = "-" + InputLabel.Content;
             }
         }
 
         private void NumberButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var currentNumber = ResultLabel.Content.ToString();
+            var currentNumber = InputLabel.Content.ToString();
             var toAdd = ((Button) sender).Content;
 
-            ResultLabel.Content = currentNumber == "0" ? toAdd : currentNumber + toAdd;
+            InputLabel.Content = currentNumber == "0" ? toAdd : currentNumber + toAdd;
             _operandFlag = false;
         }
 
         private void OperatorButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (_operandFlag || _operatorChar != '\0')
-                return;
+            if (_operatorChar != '\0')
+            {
+                InputLabel.Content = _lastNumber;
+            }
+
+            if (_result != null && _lastNumber != null && InputLabel.Content.ToString() == "0")
+            {
+                _lastNumber = _result;
+            }
+            else
+            {
+                _lastNumber = InputLabel.Content.ToString();
+            }
                 
             _operatorChar = ((Button)sender).Content.ToString()[0];
             _operandFlag = true;
-            _lastNumber = ResultLabel.Content.ToString();
+            PreviousLabel.Content = $"{_lastNumber} {_operatorChar}";
             ResultLabelClear();
         }
 
@@ -106,11 +119,11 @@ namespace Calculator
             if (_lastNumber == "" || _operatorChar == '\0')
                 return;
                 
-            var solution = Solver.SolveMath(_lastNumber, ResultLabel.Content.ToString(), _operatorChar);
-
+            _result = Solver.SolveMath(_lastNumber, InputLabel.Content.ToString(), _operatorChar);
+            
+            PreviousLabel.Content = $"{_lastNumber} {_operatorChar} {InputLabel.Content} = {_result}";
             _operatorChar = '\0';
-
-            ResultLabel.Content = solution;
+            InputLabel.Content = "0";
         }
     }
 }
