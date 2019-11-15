@@ -1,33 +1,21 @@
-﻿using System;
-using System.Globalization;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace Calculator
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    ///
+    /// The user input is treated as a string here, and as a double in the Solver
     /// </summary>
     public partial class MainWindow
     {
-        private double _lastNumber;
-        private double _result;
+        private string _lastNumber;
+        private bool operandFlag = false;
 
         public MainWindow()
         {
             InitializeComponent();
-
-            _lastNumber = 0;
-        }
-
-        private void ResultLabelSet(string setString)
-        {
-            ResultLabel.Content = setString;
-        }
-
-        private void ResultLabelSet(double setDouble)
-        {
-            ResultLabel.Content = setDouble.ToString(CultureInfo.InvariantCulture);
         }
 
         private void ResultLabelClear()
@@ -35,9 +23,27 @@ namespace Calculator
             ResultLabel.Content = "0";
         }
 
+        private void ResultLabelRemove(int characters)
+        {
+            var labelContent = ResultLabel.Content.ToString();
+
+            ResultLabel.Content = labelContent.Length > characters
+                ? labelContent.Substring(0, labelContent.Length - characters)
+                : "0";
+        }
+
         private void AcButton_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            var resultString = ResultLabel.Content.ToString();
+
+            if (resultString.Length > 1 && (resultString[resultString.Length - 2] == '.' || resultString[resultString.Length - 2] == '-'))
+            {
+                ResultLabelRemove(2);
+            }
+            else
+            {
+                ResultLabelRemove(1);
+            }
         }
 
         private void DivideButton_OnClick(object sender, RoutedEventArgs e)
@@ -47,7 +53,11 @@ namespace Calculator
 
         private void DotButton_OnClick(object sender, RoutedEventArgs e)
         {
+            if (operandFlag || ResultLabel.Content.ToString().Contains("."))
+                return;
             
+            ResultLabel.Content += ".";
+            operandFlag = true;
         }
 
         private void MinusButton_OnClick(object sender, RoutedEventArgs e)
@@ -62,18 +72,26 @@ namespace Calculator
 
         private void NegativeButton_OnClick(object sender, RoutedEventArgs e)
         {
-            _lastNumber = _lastNumber * -1;
-            ResultLabelSet(_lastNumber);
+            if ((ResultLabel.Content.ToString() == "0"))
+                return;
+            
+            if (ResultLabel.Content.ToString().Contains("-"))
+            {
+                ResultLabel.Content = ResultLabel.Content.ToString().Substring(1);
+            }
+            else
+            {
+                ResultLabel.Content = "-" + ResultLabel.Content;
+            }
         }
 
         private void NumberButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var toAdd = double.Parse(((Button) sender).Content.ToString());
+            var currentNumber = ResultLabel.Content.ToString();
+            var toAdd = ((Button) sender).Content;
 
-            var newNumber = _lastNumber * 10 + toAdd;
-            
-            ResultLabelSet(newNumber);
-            _lastNumber = newNumber;
+            ResultLabel.Content = currentNumber == "0" ? toAdd : currentNumber + toAdd;
+            operandFlag = false;
         }
 
         private void PercentageButton_OnClick(object sender, RoutedEventArgs e)
@@ -86,7 +104,7 @@ namespace Calculator
             
         }
 
-        private void ZeroButton_OnClick(object sender, RoutedEventArgs e)
+        private void SolveButton_OnClick(object sender, RoutedEventArgs e)
         {
             
         }
