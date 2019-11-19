@@ -83,5 +83,16 @@
             <Button Content="OK" Click="Button_Canvas_1_Click" Canvas.Left="120" Canvas.Top="80" Width="75"/>
             <Button Content="Shift" Canvas.Left="30" Canvas.Top="80" Width="75"/>   
         </Canvas>
+        
+        <Button Content="Error!"
+                Name="ErrorButton"
+                Click="ErrorButton_OnClick"
+                MaxWidth="85" MaxHeight="40"
+                Background="Red"
+                Foreground="DarkRed"
+                FontFamily="Arial"
+                FontSize="30"
+                Grid.Column="0" Grid.Row="3">
+        </Button>
     </Grid>
 </Window>

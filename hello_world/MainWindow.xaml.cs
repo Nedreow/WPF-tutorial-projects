@@ -17,5 +17,10 @@ namespace hello_world
             string msg = string.Format("Hello {0} {1}", FirstName.Text, LastName.Text);
             MessageBox.Show(msg);
         }
+
+        private void ErrorButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Something terrible happened", "PANIC!!", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 }
