@@ -58,7 +58,8 @@
             <DependentUpon>App.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
-        <Compile Include="Hangman.cs" />
+        <Compile Include="Game\Hangman.cs" />
+        <Compile Include="Game\WordProvider.cs" />
         <Compile Include="MainWindow.xaml.cs">
             <DependentUpon>MainWindow.xaml</DependentUpon>
             <SubType>Code</SubType>

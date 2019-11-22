@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace Hangman
@@ -9,7 +8,7 @@ namespace Hangman
     /// </summary>
     public partial class MainWindow
     {
-        private Hangman _currentGame;
+        private Game.Hangman _currentGame;
         
         public MainWindow()
         {
@@ -34,7 +33,7 @@ namespace Hangman
         
         private void StartGame()
         {
-            _currentGame = new Hangman();
+            _currentGame = new Game.Hangman();
         }
     }
 }
