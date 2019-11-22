@@ -1,8 +1,10 @@
 # Don't track content of these folders
-hello_world/bin/Debug/
-hello_world/obj/Debug/
 Calculator/bin/Debug/
 Calculator/obj/Debug/
+Hangman/bin/Debug/
+Hangman/obj/Debug/
+hello_world/bin/Debug/
+hello_world/obj/Debug/
 
 
 # Compiled source #
