@@ -15,6 +15,7 @@ namespace Hangman.Game
         public Hangman()
         {
             _word = WordProvider.GetRandomWord();
+            _guessedLetters = new Dictionary<char, bool>();
             for (var c = 'a'; c <= 'z'; c++)
             {
                 _guessedLetters[c] = false;
