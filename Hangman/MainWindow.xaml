@@ -41,135 +41,161 @@
             
             <Button 
                 Content="A"
+                Tag='a'
                 x:Name="LetterButtonA"
                 Click="LetterButton_OnClick"
                 Grid.Column="0" Grid.Row="1"/>
             <Button 
                 Content="B"
+                Tag='b'
                 x:Name="LetterButtonB"
                 Click="LetterButton_OnClick"
                 Grid.Column="1" Grid.Row="1"/>
             <Button 
                 Content="C"
+                Tag='c'
                 x:Name="LetterButtonC"
                 Click="LetterButton_OnClick"
                 Grid.Column="2" Grid.Row="1"/>
             <Button 
                 Content="D"
+                Tag='d'
                 x:Name="LetterButtonD"
                 Click="LetterButton_OnClick"
                 Grid.Column="3" Grid.Row="1"/>
             <Button 
                 Content="E"
+                Tag='e'
                 x:Name="LetterButtonE"
                 Click="LetterButton_OnClick"
                 Grid.Column="4" Grid.Row="1"/>
             <Button 
                 Content="F"
+                Tag='f'
                 x:Name="LetterButtonF"
                 Click="LetterButton_OnClick"
                 Grid.Column="5" Grid.Row="1"/>
             
             <Button 
                 Content="G"
+                Tag='g'
                 x:Name="LetterButtonG"
                 Click="LetterButton_OnClick"
                 Grid.Column="0" Grid.Row="2"/>
             <Button 
                 Content="H"
+                Tag='h'
                 x:Name="LetterButtonH"
                 Click="LetterButton_OnClick"
                 Grid.Column="1" Grid.Row="2"/>
             <Button 
                 Content="I"
+                Tag='i'
                 x:Name="LetterButtonI"
                 Click="LetterButton_OnClick"
                 Grid.Column="2" Grid.Row="2"/>
             <Button 
                 Content="J"
+                Tag='j'
                 x:Name="LetterButtonJ"
                 Click="LetterButton_OnClick"
                 Grid.Column="3" Grid.Row="2"/>
             <Button 
                 Content="K"
+                Tag='k'
                 x:Name="LetterButtonK"
                 Click="LetterButton_OnClick"
                 Grid.Column="4" Grid.Row="2"/>
             <Button 
                 Content="L"
+                Tag='l'
                 x:Name="LetterButtonL"
                 Click="LetterButton_OnClick"
                 Grid.Column="5" Grid.Row="2"/>
             
             <Button 
                 Content="M"
+                Tag='m'
                 x:Name="LetterButtonM"
                 Click="LetterButton_OnClick"
                 Grid.Column="0" Grid.Row="3"/>
             <Button 
                 Content="N"
+                Tag='n'
                 x:Name="LetterButtonN"
                 Click="LetterButton_OnClick"
                 Grid.Column="1" Grid.Row="3"/>
             <Button 
                 Content="O"
+                Tag='o'
                 x:Name="LetterButtonO"
                 Click="LetterButton_OnClick"
                 Grid.Column="2" Grid.Row="3"/>
             <Button 
                 Content="P"
+                Tag='p'
                 x:Name="LetterButtonP"
                 Click="LetterButton_OnClick"
                 Grid.Column="3" Grid.Row="3"/>
             <Button 
                 Content="Q"
+                Tag='q'
                 x:Name="LetterButtonQ"
                 Click="LetterButton_OnClick"
                 Grid.Column="4" Grid.Row="3"/>
             <Button 
                 Content="R"
+                Tag='r'
                 x:Name="LetterButtonR"
                 Click="LetterButton_OnClick"
                 Grid.Column="5" Grid.Row="3"/>
             
             <Button 
                 Content="S"
+                Tag='s'
                 x:Name="LetterButtonS"
                 Click="LetterButton_OnClick"
                 Grid.Column="0" Grid.Row="4"/>
             <Button 
                 Content="T"
+                Tag='t'
                 x:Name="LetterButtonT"
                 Click="LetterButton_OnClick"
                 Grid.Column="1" Grid.Row="4"/>
             <Button 
                 Content="U"
+                Tag='u'
                 x:Name="LetterButtonU"
                 Click="LetterButton_OnClick"
                 Grid.Column="2" Grid.Row="4"/>
             <Button 
                 Content="V"
+                Tag='v'
                 x:Name="LetterButtonV"
                 Click="LetterButton_OnClick"
                 Grid.Column="3" Grid.Row="4"/>
             <Button 
                 Content="W"
+                Tag='w'
                 x:Name="LetterButtonW"
                 Click="LetterButton_OnClick"
                 Grid.Column="4" Grid.Row="4"/>
             <Button 
                 Content="X"
+                Tag='x'
                 x:Name="LetterButtonX"
                 Click="LetterButton_OnClick"
                 Grid.Column="5" Grid.Row="4"/>
             
             <Button 
                 Content="Y"
+                Tag='y'
                 x:Name="LetterButtonY"
                 Click="LetterButton_OnClick"
                 Grid.Column="0" Grid.Row="5"/>
             <Button 
                 Content="Z"
+                Tag='z'
                 x:Name="LetterButtonZ"
                 Click="LetterButton_OnClick"
                 Grid.Column="1" Grid.Row="5"/>
