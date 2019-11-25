@@ -8,9 +8,10 @@ namespace Hangman.Game
     
     public class Hangman
     {
-        private string _word;
+        private readonly string _word;
         private char _currentGuess;
         private IDictionary<char, bool> _guessedLetters;
+        private int _mistakes = 0;
 
         public Hangman()
         {
@@ -22,11 +23,31 @@ namespace Hangman.Game
             }
         }
         
-        public bool EvaluateGuess(char guess)
+        public bool ReceiveGuess(char guess)
         {
             _currentGuess = guess;
+            _guessedLetters[_currentGuess] = true;
 
             return true;
+        }
+
+        public string GetWord()
+        {
+            string wordShown = "";
+            
+            foreach (var wordChar in _word.ToCharArray())
+            {
+                if (_guessedLetters[wordChar])
+                {
+                    wordShown += wordChar;
+                }
+                else
+                {
+                    wordShown += '.';
+                }
+            }
+            
+            return wordShown;
         }
     }
 }

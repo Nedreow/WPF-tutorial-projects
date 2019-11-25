@@ -4,7 +4,7 @@ namespace Hangman
     {
         public static string GetRandomWord()
         {
-            return "Hangman";
+            return "hangman";
         }
     }
 }

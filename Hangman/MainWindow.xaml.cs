@@ -15,9 +15,10 @@ namespace Hangman
         {
             InitializeComponent();
             _currentGame = new Game.Hangman();
+            SetWordBoxContent(_currentGame.GetWord());
         }
 
-        public void SetWordBoxContent(string text)
+        private void SetWordBoxContent(string text)
         {
             WordBox.Content = text;
         }
@@ -31,16 +32,6 @@ namespace Hangman
 
         private void NewGameButton_OnClick(object sender, RoutedEventArgs e)
         {
-            StartGame();
-        }
-
-        private void SendLetter(char guess)
-        {
-            var correct = _currentGame.EvaluateGuess(guess);
-        }
-        
-        private void StartGame()
-        {
             _currentGame = new Game.Hangman();
 
             IEnumerable children = LogicalTreeHelper.GetChildren(ControlsGrid);
@@ -50,6 +41,15 @@ namespace Hangman
                 {
                     ((Button) child).IsEnabled = true;
                 }
+            }
+        }
+
+        private void SendLetter(char guess)
+        {
+            var correct = _currentGame.ReceiveGuess(guess);
+            if (correct)
+            {
+                SetWordBoxContent(_currentGame.GetWord());
             }
         }
     }
