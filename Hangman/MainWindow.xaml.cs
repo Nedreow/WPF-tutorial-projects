@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Hangman
@@ -13,7 +14,7 @@ namespace Hangman
         public MainWindow()
         {
             InitializeComponent();
-            StartGame();
+            _currentGame = new Game.Hangman();
         }
 
         public void SetWordBoxContent(string text)
@@ -23,13 +24,14 @@ namespace Hangman
 
         private void LetterButton_OnClick(object sender, RoutedEventArgs e)
         {
-            SendLetter(char.Parse(((Button)sender).Tag.ToString()));
+            var button = (Button) sender;
+            SendLetter(char.Parse(button.Tag.ToString()));
+            button.IsEnabled = false;
         }
 
         private void NewGameButton_OnClick(object sender, RoutedEventArgs e)
         {
             StartGame();
-            ((Button) sender).IsEnabled = false;
         }
 
         private void SendLetter(char guess)
@@ -40,7 +42,15 @@ namespace Hangman
         private void StartGame()
         {
             _currentGame = new Game.Hangman();
-            // https://stackoverflow.com/questions/874380/wpf-how-do-i-loop-through-the-all-controls-in-a-window
+
+            IEnumerable children = LogicalTreeHelper.GetChildren(ControlsGrid);
+            foreach (object child in children)
+            {
+                if (child is Button)
+                {
+                    ((Button) child).IsEnabled = true;
+                }
+            }
         }
     }
 }
