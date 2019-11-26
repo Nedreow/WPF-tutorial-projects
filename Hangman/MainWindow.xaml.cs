@@ -42,6 +42,7 @@ namespace Hangman
                     ((Button) child).IsEnabled = true;
                 }
             }
+            SetWordBoxContent(_currentGame.GetWord());
         }
 
         private void SendLetter(char guess)
