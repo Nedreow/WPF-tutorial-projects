@@ -23,12 +23,17 @@ namespace Hangman.Game
             }
         }
         
-        public bool ReceiveGuess(char guess)
+        public int EvaluateGuess(char guess)
         {
             _currentGuess = guess;
             _guessedLetters[_currentGuess] = true;
 
-            return true;
+            if (!_word.Contains(guess.ToString()))
+            {
+                _mistakes++;
+            }
+
+            return _mistakes;
         }
 
         public string GetWord()
@@ -48,6 +53,19 @@ namespace Hangman.Game
             }
             
             return wordShown;
+        }
+
+        public bool HasGuessedAllLetters()
+        {
+            foreach (char letter in _word)
+            {
+                if (!_guessedLetters[letter])
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

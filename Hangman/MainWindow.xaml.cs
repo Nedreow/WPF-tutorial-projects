@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Hangman
 {
@@ -34,24 +35,50 @@ namespace Hangman
         {
             _currentGame = new Game.Hangman();
 
+            EnableAlphabetButtons(true);
+            WordBox.Foreground = Brushes.Black;
+            SetWordBoxContent(_currentGame.GetWord());
+        }
+
+        private void ShowFailures(int mistakeCount)
+        {
+            MistakeCountLabel.Content = mistakeCount.ToString();
+            if (mistakeCount >= 10)
+                showHanged();
+        }
+
+        private void showHanged()
+        {
+            SetWordBoxContent("You Have Been Hanged!!");
+            EnableAlphabetButtons(false);
+        }
+
+        private void SendLetter(char guess)
+        {
+            var mistakeCount = _currentGame.EvaluateGuess(guess);
+            
+            SetWordBoxContent(_currentGame.GetWord());
+            ShowFailures(mistakeCount);
+
+            if (_currentGame.HasGuessedAllLetters())
+            {
+                WordBox.Foreground = Brushes.LawnGreen;
+                EnableAlphabetButtons(false);
+            }
+        }
+
+        private void EnableAlphabetButtons(bool enable)
+        {
             IEnumerable children = LogicalTreeHelper.GetChildren(ControlsGrid);
             foreach (object child in children)
             {
                 if (child is Button)
                 {
-                    ((Button) child).IsEnabled = true;
+                    ((Button) child).IsEnabled = enable;
                 }
             }
-            SetWordBoxContent(_currentGame.GetWord());
-        }
 
-        private void SendLetter(char guess)
-        {
-            var correct = _currentGame.ReceiveGuess(guess);
-            if (correct)
-            {
-                SetWordBoxContent(_currentGame.GetWord());
-            }
+            NewGameButton.IsEnabled = true;
         }
     }
 }
