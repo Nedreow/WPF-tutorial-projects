@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hangman"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="370" Width="525">
     
     
     
@@ -15,7 +15,81 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         
-        <Label x:Name="MistakeCountLabel" Content="0"/>
+        <Canvas x:Name="HangedManCanvas">
+            <Line
+                x:Name="Hanged1"
+                Visibility="Hidden"
+                X1="60" Y1="300"
+                X2="60" Y2="78"
+                Stroke="Black"
+                StrokeThickness="4"/>
+            <Line
+                x:Name="Hanged2"
+                Visibility="Hidden"
+                X1="60" Y1="80"
+                X2="137" Y2="80"
+                Stroke="Black"
+                StrokeThickness="4"/>
+            <Line
+                x:Name="Hanged3"
+                Visibility="Hidden"
+                X1="100" Y1="80"
+                X2="60" Y2="130"
+                Stroke="Black"
+                StrokeThickness="4"/>
+            <Line
+                x:Name="Hanged4"
+                Visibility="Hidden"
+                X1="135" Y1="80"
+                X2="135" Y2="110"
+                Stroke="Black"
+                StrokeThickness="4"/>
+            <Ellipse
+                x:Name="Hanged5"
+                Visibility="Hidden"
+                Width="30"
+                Height="30"
+                Stroke="Black"
+                StrokeThickness="4"
+                Canvas.Left="120"
+                Canvas.Top="110" />
+            <Line
+                x:Name="Hanged6"
+                Visibility="Hidden"
+                X1="135" Y1="140"
+                X2="135" Y2="210"
+                Stroke="Black"
+                StrokeThickness="4"/>
+            <Line
+                x:Name="Hanged7"
+                Visibility="Hidden"
+                X1="100" Y1="140"
+                X2="135" Y2="160"
+                Stroke="Black"
+                StrokeThickness="4"/>
+            <Line
+                x:Name="Hanged8"
+                Visibility="Hidden"
+                X1="170" Y1="140"
+                X2="135" Y2="160"
+                Stroke="Black"
+                StrokeThickness="4"/>
+            <Line
+                x:Name="Hanged9"
+                Visibility="Hidden"
+                X1="135" Y1="210"
+                X2="110" Y2="260"
+                Stroke="Black"
+                StrokeThickness="4"/>
+            <Line
+                x:Name="Hanged10"
+                Visibility="Hidden"
+                X1="135" Y1="210"
+                X2="160" Y2="260"
+                Stroke="Black"
+                StrokeThickness="4"/>
+        </Canvas>
+        
         
         <Grid
             x:Name="ControlsGrid"

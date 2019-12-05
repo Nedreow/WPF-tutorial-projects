@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace Hangman
 {
@@ -17,6 +18,7 @@ namespace Hangman
             InitializeComponent();
             _currentGame = new Game.Hangman();
             SetWordBoxContent(_currentGame.GetWord());
+            HideHangedMan();
         }
 
         private void SetWordBoxContent(string text)
@@ -37,17 +39,23 @@ namespace Hangman
 
             EnableAlphabetButtons(true);
             WordBox.Foreground = Brushes.Black;
+            HideHangedMan();
             SetWordBoxContent(_currentGame.GetWord());
         }
 
         private void ShowFailures(int mistakeCount)
         {
-            MistakeCountLabel.Content = mistakeCount.ToString();
+            var hangedShape = HangedManCanvas.FindName($"Hanged{mistakeCount.ToString()}");
+            if (hangedShape != null)
+            {
+                ((Shape)hangedShape).Visibility = Visibility.Visible;
+            }
+
             if (mistakeCount >= 10)
-                showHanged();
+                ShowHanged();
         }
 
-        private void showHanged()
+        private void ShowHanged()
         {
             SetWordBoxContent("Hanged!!");
             EnableAlphabetButtons(false);
@@ -55,10 +63,11 @@ namespace Hangman
 
         private void SendLetter(char guess)
         {
-            var mistakeCount = _currentGame.EvaluateGuess(guess);
+            bool correct = _currentGame.EvaluateGuess(guess);
             
             SetWordBoxContent(_currentGame.GetWord());
-            ShowFailures(mistakeCount);
+            if (!correct)
+                ShowFailures(_currentGame.mistakes);
 
             if (_currentGame.HasGuessedAllLetters())
             {
@@ -79,6 +88,18 @@ namespace Hangman
             }
 
             NewGameButton.IsEnabled = true;
+        }
+
+        private void HideHangedMan()
+        {
+            IEnumerable children = LogicalTreeHelper.GetChildren(HangedManCanvas);
+            foreach (object child in children)
+            {
+                if (child is Shape)
+                {
+                    ((Shape) child).Visibility = Visibility.Hidden;
+                }
+            }
         }
     }
 }

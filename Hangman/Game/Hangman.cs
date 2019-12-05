@@ -11,7 +11,7 @@ namespace Hangman.Game
         private readonly string _word;
         private char _currentGuess;
         private IDictionary<char, bool> _guessedLetters;
-        private int _mistakes = 0;
+        public int mistakes = 0;
 
         public Hangman()
         {
@@ -23,17 +23,18 @@ namespace Hangman.Game
             }
         }
         
-        public int EvaluateGuess(char guess)
+        public bool EvaluateGuess(char guess)
         {
             _currentGuess = guess;
             _guessedLetters[_currentGuess] = true;
 
             if (!_word.Contains(guess.ToString()))
             {
-                _mistakes++;
+                mistakes++;
+                return false;
             }
 
-            return _mistakes;
+            return true;
         }
 
         public string GetWord()
