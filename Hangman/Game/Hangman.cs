@@ -52,7 +52,7 @@ namespace Hangman.Game
                 }
             }
             
-            return wordShown;
+            return wordShown.ToUpper();
         }
 
         public bool HasGuessedAllLetters()

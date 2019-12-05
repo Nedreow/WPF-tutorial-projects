@@ -49,7 +49,7 @@ namespace Hangman
 
         private void showHanged()
         {
-            SetWordBoxContent("You Have Been Hanged!!");
+            SetWordBoxContent("Hanged!!");
             EnableAlphabetButtons(false);
         }
 

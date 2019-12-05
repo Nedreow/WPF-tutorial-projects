@@ -39,6 +39,7 @@
             
             <Label
                 x:Name="WordBox"
+                FontSize="35"
                 Grid.Column="0" Grid.Row="0"
                 Grid.ColumnSpan="6"/>
             
