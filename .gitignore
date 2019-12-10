@@ -5,6 +5,10 @@ Hangman/bin/Debug/
 Hangman/obj/Debug/
 hello_world/bin/Debug/
 hello_world/obj/Debug/
+MVVM Weather App/bin/Debug/
+MVVM Weather App/obj/Debug/
+/packages/
+!packages/repositories.config
 
 
 # Compiled source #
