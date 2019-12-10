@@ -1,1 +1,8 @@
 AccuWeather API Key: XSfHZJ1iLjNfBEtBGdU2kqLNygGOiq7G
+
+Important calls:
+https://developer.accuweather.com/accuweather-locations-api/apis/get/locations/v1/cities/autocomplete
+https://developer.accuweather.com/accuweather-current-conditions-api/apis/get/currentconditions/v1/%7BlocationKey%7D
+https://developer.accuweather.com/accuweather-forecast-api/apis
+
+Free plan allows up to 12 hours or 5 days forecast
