@@ -61,8 +61,6 @@
         <e p="App.xaml" t="Include" />
         <e p="App.xaml.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="MainWindow.xaml" t="Include" />
-        <e p="MainWindow.xaml.cs" t="Include" />
         <e p="Model" t="Include">
           <e p="City.cs" t="Include" />
           <e p="CurrentConditions.cs" t="Include" />
@@ -74,6 +72,10 @@
           <e p="AssemblyInfo.cs" t="Include" />
           <e p="Resources.Designer.cs" t="Include" />
           <e p="Resources.resx" t="Include" />
+        </e>
+        <e p="View" t="Include">
+          <e p="WeatherWindow.xaml" t="Include" />
+          <e p="WeatherWindow.xaml.cs" t="Include" />
         </e>
         <e p="ViewModel" t="Include">
           <e p="Helpers" t="Include">
