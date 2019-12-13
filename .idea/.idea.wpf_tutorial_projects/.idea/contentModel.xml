@@ -78,6 +78,9 @@
           <e p="WeatherWindow.xaml.cs" t="Include" />
         </e>
         <e p="ViewModel" t="Include">
+          <e p="Commands" t="Include">
+            <e p="SearchCommand.cs" t="Include" />
+          </e>
           <e p="Helpers" t="Include">
             <e p="AccuWeatherHelper.cs" t="Include" />
           </e>

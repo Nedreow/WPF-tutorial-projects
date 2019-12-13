@@ -1,6 +1,8 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using MVVM_Weather_App.Model;
+using MVVM_Weather_App.ViewModel.Commands;
+using MVVM_Weather_App.ViewModel.Helpers;
 
 namespace MVVM_Weather_App.ViewModel
 {
@@ -42,11 +44,23 @@ namespace MVVM_Weather_App.ViewModel
             }
         }
 
+        public SearchCommand SearchCommand { get; set; }
+
+        public WeatherVM()
+        {
+            SearchCommand = new SearchCommand(this);
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public async void MakeQuery()
+        {
+            var cities = await AccuWeatherHelper.GetCities(Query);
         }
     }
 }
