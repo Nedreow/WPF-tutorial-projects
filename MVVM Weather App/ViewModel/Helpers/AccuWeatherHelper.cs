@@ -11,7 +11,7 @@ namespace MVVM_Weather_App.ViewModel.Helpers
     {
         public const string BaseUrl = "http://dataservice.accuweather.com/";
         public const string AutocompleteEndpoint = "locations/v1/cities/autocomplete?apikey={0}&q={1}";
-        public const string CurrentConditionsEndpoint = "currentconditions/v1/{0}?apikey{1}";
+        public const string CurrentConditionsEndpoint = "currentconditions/v1/{0}?apikey={1}";
         public const string ApiKey = "XSfHZJ1iLjNfBEtBGdU2kqLNygGOiq7G";
 
         public static async Task<List<City>> GetCities(string query)

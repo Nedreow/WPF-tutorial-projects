@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using MVVM_Weather_App.Model;
@@ -19,6 +20,8 @@ namespace MVVM_Weather_App.ViewModel
                 OnPropertyChanged("Query");
             }
         }
+        
+        public ObservableCollection<City> Cities { get; set; }
 
         private CurrentConditions _currentConditions;
 
@@ -41,6 +44,7 @@ namespace MVVM_Weather_App.ViewModel
             {
                 _selectedCity = value;
                 OnPropertyChanged("SelectedCity");
+                GetCurrentConditions();
             }
         }
 
@@ -49,6 +53,7 @@ namespace MVVM_Weather_App.ViewModel
         public WeatherVM()
         {
             SearchCommand = new SearchCommand(this);
+            Cities = new ObservableCollection<City>();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -58,9 +63,22 @@ namespace MVVM_Weather_App.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        private async void GetCurrentConditions()
+        {
+            Query = string.Empty;
+            Cities.Clear();
+            CurrentConditions = await AccuWeatherHelper.GetCurrentConditions(SelectedCity.Key);
+        }
+
         public async void MakeQuery()
         {
             var cities = await AccuWeatherHelper.GetCities(Query);
+            
+            Cities.Clear();
+            foreach (var city in cities)
+            {
+                Cities.Add(city);
+            }
         }
     }
 }
