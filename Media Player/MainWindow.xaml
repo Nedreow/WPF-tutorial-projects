@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:Media_Player"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="280"
-        Width="380"
+        Height="560"
+        Width="760"
         Background="#404040"
         Foreground="White">
     <Grid>
@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="22"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
  
         <Border BorderBrush="White" BorderThickness="1">
@@ -28,22 +28,25 @@
                           MediaEnded="Media_MediaEnded"
                           MediaFailed="Media_MediaFailed"/>
         </Border>
- 
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-             
+        
+        <StatusBar Grid.Row="1" Background="#404040">
             <TextBlock Name="MediaName" Foreground="White">No Media</TextBlock>
-            <Ellipse Name="Status" Grid.Column="1" Width="16" Height="16" Fill="Gray" Margin="2"/>
-        </Grid>
+            <Separator/>
+            <TextBlock Name="MediaInformation" Foreground="White"/>
+            <Separator/>
+            <Button Click="Back_Click" Padding="0">&lt;&lt;</Button>
+            <Button Click="Forward_Click" Padding="0">&gt;&gt;</Button>
+            <StatusBarItem HorizontalAlignment="Right">
+                <Ellipse Name="Status" Grid.Column="1" Width="12" Height="12" Fill="Gray" Margin="2" />
+            </StatusBarItem>
+        </StatusBar>
  
         <StackPanel Grid.Column="1">
             <Button Click="PlayButton_Click">Play</Button>
             <Button Click="PauseButton_Click">Pause</Button>
             <Button Click="StopButton_Click">Stop</Button>
-            <ToggleButton Click="MuteButton_Click" Margin="0 5 0 0">Mute</ToggleButton>
+            <Separator/>
+            <ToggleButton Click="MuteButton_Click" >Mute</ToggleButton>
  
             <TextBlock FontSize="10">Volume</TextBlock>
             <Slider Name="VolumeSlider"

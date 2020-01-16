@@ -1,7 +1,7 @@
 Combine pause and play buttons
 auto start video on loading
-slider that shows video progress and can be used to go to a time stamp
-key controls
+slider that shows video progress
+hotkey controls
     play/pause
     volume up/down
     mute

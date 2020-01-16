@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using Microsoft.Win32;
@@ -67,6 +68,7 @@ namespace Media_Player
         private void Media_MediaOpened(object sender, RoutedEventArgs e)
         {
             Status.Fill = Brushes.Green;
+            ShowMediaInformation();
         }
  
         private void Media_MediaEnded(object sender, RoutedEventArgs e)
@@ -77,6 +79,59 @@ namespace Media_Player
         private void Media_MediaFailed(object sender, ExceptionRoutedEventArgs e)
         {
             Status.Fill = Brushes.Red;
+        }
+        
+        private void ShowMediaInformation()
+        {
+            var sb = new StringBuilder();
+ 
+            var duration = Media.NaturalDuration.HasTimeSpan
+                ? Media.NaturalDuration.TimeSpan.TotalSeconds.ToString("#s")
+                : "No duration";
+            sb.Append(duration);
+ 
+            if (Media.HasVideo)
+            {
+                sb.Append(", video");
+            }
+ 
+            if (Media.HasAudio)
+            {
+                sb.Append(", audio");
+            }
+
+            if (Media.HasVideo)
+            {
+                sb.Append(" (")
+                    .Append(Media.NaturalVideoWidth)
+                    .Append("×")
+                    .Append(Media.NaturalVideoHeight)
+                    .Append(")");
+            }
+
+            MediaInformation.Text = sb.ToString();
+        }
+        
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Media.NaturalDuration.HasTimeSpan) return;
+ 
+            var position = Media.Position;
+            if (position.TotalSeconds < 5)
+                Media.Position = TimeSpan.FromSeconds(0);
+            else
+                Media.Position = position.Add(TimeSpan.FromSeconds(-5));
+        }
+ 
+        private void Forward_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Media.NaturalDuration.HasTimeSpan) return;
+ 
+            var targetPosition = Media.Position.Add(TimeSpan.FromSeconds(5));
+            if (targetPosition > Media.NaturalDuration.TimeSpan)
+                Media.Position = Media.NaturalDuration.TimeSpan;
+            else
+                Media.Position = targetPosition;
         }
     }
 }
