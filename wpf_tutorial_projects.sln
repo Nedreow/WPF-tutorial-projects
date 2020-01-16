@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangman", "Hangman\Hangman.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM Weather App", "MVVM Weather App\MVVM Weather App.csproj", "{C6C1B969-DC0D-4BF5-A6DC-1A1B35DC0797}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Media Player", "Media Player\Media Player.csproj", "{0B1607C6-2F2C-433F-83E9-D2D7D0D752B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{C6C1B969-DC0D-4BF5-A6DC-1A1B35DC0797}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6C1B969-DC0D-4BF5-A6DC-1A1B35DC0797}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6C1B969-DC0D-4BF5-A6DC-1A1B35DC0797}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B1607C6-2F2C-433F-83E9-D2D7D0D752B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B1607C6-2F2C-433F-83E9-D2D7D0D752B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B1607C6-2F2C-433F-83E9-D2D7D0D752B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B1607C6-2F2C-433F-83E9-D2D7D0D752B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

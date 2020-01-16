@@ -1,0 +1,54 @@
+﻿<Window x:Class="Media_Player.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Media_Player"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="280"
+        Width="380"
+        Background="#404040"
+        Foreground="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="80"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="22"/>
+        </Grid.RowDefinitions>
+ 
+        <Border BorderBrush="White" BorderThickness="1">
+            <MediaElement Name="Media" Margin="2"/>
+        </Border>
+ 
+        <TextBlock Name="MediaName" Grid.Row="1" Foreground="White">No Media</TextBlock>
+ 
+        <StackPanel Grid.Column="1">
+            <Button>Play</Button>
+            <Button>Pause</Button>
+            <Button>Stop</Button>
+            <ToggleButton Margin="0 5 0 0">Mute</ToggleButton>
+ 
+            <TextBlock FontSize="10">Volume</TextBlock>
+            <Slider Name="VolumeSlider" Value="0.75" Maximum="1"/>
+ 
+            <TextBlock FontSize="10">Balance</TextBlock>
+            <Slider Name="BalanceSlider" Value="0" Minimum="-1" Maximum="1"/>
+ 
+            <TextBlock FontSize="10">Speed</TextBlock>
+            <Slider Name="SpeedSlider"
+                    Value="1" Minimum="0" Maximum="4"
+                    TickPlacement="Both"
+                    IsSnapToTickEnabled="True">
+                <Slider.Ticks>
+                    0, 0.25, 0.5, 1, 2, 4
+                </Slider.Ticks>
+            </Slider>
+        </StackPanel>
+ 
+        <Button Grid.Row="1" Grid.Column="1">Load</Button>
+    </Grid>
+</Window>
