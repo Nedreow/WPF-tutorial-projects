@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Media;
 using Microsoft.Win32;
 
 namespace Media_Player
@@ -61,6 +62,21 @@ namespace Media_Player
         private void Speed_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             Media.SpeedRatio = SpeedSlider.Value;
+        }
+        
+        private void Media_MediaOpened(object sender, RoutedEventArgs e)
+        {
+            Status.Fill = Brushes.Green;
+        }
+ 
+        private void Media_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            Status.Fill = Brushes.Blue;
+        }
+ 
+        private void Media_MediaFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+            Status.Fill = Brushes.Red;
         }
     }
 }
