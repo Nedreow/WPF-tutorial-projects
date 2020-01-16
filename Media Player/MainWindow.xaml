@@ -21,15 +21,15 @@
         </Grid.RowDefinitions>
  
         <Border BorderBrush="White" BorderThickness="1">
-            <MediaElement Name="Media" Margin="2"/>
+            <MediaElement Name="Media" Margin="2" LoadedBehavior="Manual"/>
         </Border>
  
         <TextBlock Name="MediaName" Grid.Row="1" Foreground="White">No Media</TextBlock>
  
         <StackPanel Grid.Column="1">
-            <Button>Play</Button>
-            <Button>Pause</Button>
-            <Button>Stop</Button>
+            <Button Click="PlayButton_Click">Play</Button>
+            <Button Click="PauseButton_Click">Pause</Button>
+            <Button Click="StopButton_Click">Stop</Button>
             <ToggleButton Margin="0 5 0 0">Mute</ToggleButton>
  
             <TextBlock FontSize="10">Volume</TextBlock>
@@ -49,6 +49,6 @@
             </Slider>
         </StackPanel>
  
-        <Button Grid.Row="1" Grid.Column="1">Load</Button>
+        <Button Grid.Row="1" Grid.Column="1" Click="LoadButton_Click">Load</Button>
     </Grid>
 </Window>
