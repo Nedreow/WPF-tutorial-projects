@@ -30,17 +30,22 @@
             <Button Click="PlayButton_Click">Play</Button>
             <Button Click="PauseButton_Click">Pause</Button>
             <Button Click="StopButton_Click">Stop</Button>
-            <ToggleButton Margin="0 5 0 0">Mute</ToggleButton>
+            <ToggleButton Click="MuteButton_Click" Margin="0 5 0 0">Mute</ToggleButton>
  
             <TextBlock FontSize="10">Volume</TextBlock>
-            <Slider Name="VolumeSlider" Value="0.75" Maximum="1"/>
+            <Slider Name="VolumeSlider"
+                    Value="0.75" Maximum="1"
+                    ValueChanged="VolumeSlider_ValueChanged"/>
  
             <TextBlock FontSize="10">Balance</TextBlock>
-            <Slider Name="BalanceSlider" Value="0" Minimum="-1" Maximum="1"/>
+            <Slider Name="BalanceSlider"
+                    Value="0" Minimum="-1" Maximum="1"
+                    ValueChanged="Balance_ValueChanged"/>
  
             <TextBlock FontSize="10">Speed</TextBlock>
             <Slider Name="SpeedSlider"
                     Value="1" Minimum="0" Maximum="4"
+                    ValueChanged="Speed_ValueChanged"
                     TickPlacement="Both"
                     IsSnapToTickEnabled="True">
                 <Slider.Ticks>
